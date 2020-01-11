@@ -6,11 +6,11 @@ export default Module.build({
   }),
 
   actions: {
-    list$fetch({ commit }) {
-      const data = this.$http(
+    async list$fetch({ commit }) {
+      const data = await this.$http.$get(
         "https://jsonplaceholder.typicode.com/posts?_start=0&_limit=15"
       );
-      commit("name$assign", data);
+      commit("list$assign", data);
     }
   }
 });
